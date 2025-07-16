@@ -9,10 +9,10 @@
 https://drive.google.com/file/d/1vCNx-OHVqf_rK0JSynlsNSSr2-kjptYU/view?usp=drive_link
 
  ./data/self-make-Unet/
-    image_val/
-    images/
-    mask_val/
-    masks/
+    image_val
+    images
+    mask_val
+    masks
 
 
 訓練就直接執行  main.py
