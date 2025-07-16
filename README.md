@@ -8,7 +8,7 @@
 請先至下方連結下載資料集，解壓縮後按照直接把資料夾放在根目錄，應該會長這樣(我幫妳們上傳好了，這玩意原本在百度上)
 https://drive.google.com/file/d/1vCNx-OHVqf_rK0JSynlsNSSr2-kjptYU/view?usp=drive_link
 
- ./data/self-make-Unet/
+ ./data/self-make-Unet/  
     image_val  
     images  
     mask_val  
