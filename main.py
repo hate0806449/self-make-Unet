@@ -3,18 +3,17 @@ import torch
 from torch.utils.data import DataLoader
 import torchvision.transforms as T
 import torch.optim as optim
-from model import UNet, UNetWithTimmEncoder
+from model import UNet, UNetWithTimmEncoder, UNetWithMobileNetEncoder, UNetWithSwinEncoder
 from dataset import CustomDataset
 from train import train_model
-from model import UNetWithSwinEncoder
 
 # Config
 IMG_HEIGHT, IMG_WIDTH = 400, 400
-BATCH_SIZE = 16
+BATCH_SIZE = 4
 NUM_EPOCHS = 20
 USE_TIMM = True
-BACKBONE_NAME = 'resnet34'
-
+#BACKBONE_NAME = 'resnet34'
+BACKBONE_NAME = 'mobilenetv2_100'
 IMAGE_DIR = 'images'
 MASK_DIR = 'masks'
 VAL_IMAGE_DIR = 'image_val'
@@ -51,13 +50,21 @@ val_dataset = CustomDataset(VAL_IMAGE_DIR, VAL_MASK_DIR, image_transform=val_tra
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
-# Model
-if USE_TIMM:
+
+if 'mobilenetv2' in BACKBONE_NAME:
+    model = UNetWithMobileNetEncoder(backbone_name=BACKBONE_NAME).to(device)
+elif USE_TIMM:
     model = UNetWithTimmEncoder(BACKBONE_NAME).to(device)
-#elif BACKBONE_NAME == 'swin':
-    #model = UNetWithSwinEncoder(backbone_name='swin_base_patch4_window7_224').to(device)
 else:
     model = UNet().to(device)
+
+# Model
+#if USE_TIMM:
+    #model = UNetWithTimmEncoder(BACKBONE_NAME).to(device)
+#elif BACKBONE_NAME == 'swin':
+    #model = UNetWithSwinEncoder(backbone_name='swin_base_patch4_window7_224').to(device)
+#else:
+    #model = UNet().to(device)
 
 optimizer = optim.Adam(model.parameters(), lr=1e-4)
 

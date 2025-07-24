@@ -5,14 +5,17 @@ from PIL import ImageEnhance
 import torch
 import torchvision.transforms as T
 from PIL import Image
-from model import UNet, UNetWithTimmEncoder  # 你的模型定義檔
+from model import UNet, UNetWithTimmEncoder, UNetWithMobileNetEncoder  # 你的模型定義檔
+from model import UNetWithSwinEncoder 
 import matplotlib.pyplot as plt
 
 # 參數設定
-MODEL_PATH = "best_model.pth"
-IMAGE_PATH = "me.jpg"
+MODEL_PATH = "swim_trasnformer_384.pth"
+IMAGE_PATH = "black.jpg"
+# IMAGE_PATH = "me.jpg"
+#IMAGE_PATH = "image.png"
 OUTPUT_PATH = "pred_test.png"  # 直接存在執行資料夾
-IMG_HEIGHT, IMG_WIDTH = 400, 400
+IMG_HEIGHT, IMG_WIDTH = 384, 384
 THRESHOLD = 0.5
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -25,7 +28,9 @@ transform = T.Compose([
 ])
 
 # 載入模型
-model = UNetWithTimmEncoder(backbone_name='resnet34').to(device)
+#model = UNetWithTimmEncoder(backbone_name='resnet34').to(device)
+#model = UNetWithMobileNetEncoder(backbone_name="mobilenetv2_100").to(device)
+model = UNetWithSwinEncoder(backbone_name='swin_base_patch4_window12_384').to(device)
 #model = UNet().to(device)
 model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 model.eval()
