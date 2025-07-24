@@ -9,8 +9,10 @@
 訓練過程中有使用隨機的亮度與對比(溫和)，使得最後測試能有更具泛化能力
 
 如果你要訓練，請按照以下步驟
-請先至下方連結下載資料集，解壓縮後按照直接把資料夾放在根目錄，應該會長這樣(我幫妳們上傳好了，這玩意原本在百度上)，裡面也有訓練好的模型
-https://drive.google.com/file/d/1vCNx-OHVqf_rK0JSynlsNSSr2-kjptYU/view?usp=drive_link
+請先至下方連結下載資料集，解壓縮後按照直接把資料夾放在根目錄，應該會長這樣(我幫妳們上傳好了，這玩意原本在百度上)
+https://drive.google.com/file/d/1vCNx-OHVqf_rK0JSynlsNSSr2-kjptYU/view?usp=drive_link  
+以下是訓練好的模型  
+https://drive.google.com/drive/u/0/folders/1QrqgqSeDj9jMspZhS3teaKfc3ZMu3KPT  
 
  ./data/self-make-Unet/  
     image_val  
