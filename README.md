@@ -1,6 +1,10 @@
+這個架構屬於U-net
+要使用resnet34,mobilenet當作backbone，使用main.py訓練
+如果是trasnformer請使用trasnformer.py訓練(直接跑這個py)
+確保有資料集再跑啊
 
-我使用resnet34當作backbone，這個架構屬於U-net
-因為我是使用timm直接引用的，所以有興趣也可以試看看其他backbone
+訓練後有模型了就可以跑output.py，會幫你把所有照片分割，並按照對應檔案名稱製作資料夾給你存取
+
 
 訓練過程中有使用隨機的亮度與對比(溫和)，使得最後測試能有更具泛化能力
 
